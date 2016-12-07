@@ -1,2 +1,2 @@
 # twitch-api
-Mucking around with the Twitch API
+Twitch Stream Viewer - vanilla JS and Material Design Lite
