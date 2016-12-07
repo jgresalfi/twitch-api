@@ -1,0 +1,28 @@
+/* Global Styles */
+
+.center-text {
+	text-align: center;
+}
+
+.max-width {
+	max-width: 870px;
+}
+
+.element-center {
+	margin: 0 auto;
+}
+
+/* End Global Styles */
+
+
+.demo-card-wide.mdl-card {
+  width: 512px;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('https://static-cdn.jtvnw.net/jtv_user_pictures/ogamingsc2-profile_banner-d418aed2c0ef7d35-480.jpeg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
