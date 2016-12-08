@@ -1,15 +1,20 @@
 /* Global Styles */
 
+body {
+	background-color: #BDBDBD;
+}
+
+.mount-cards {
+	background-color: #fff;
+	box-shadow: 1px 1px 8px 0px rgba(99, 101, 102, 0.85);
+}
+
 .center-text {
 	text-align: center;
 }
 
-.max-width {
-	max-width: 870px;
-}
-
 .element-center {
-	margin: 0 auto;
+	margin: 15px auto;
 }
 
 /* End Global Styles */

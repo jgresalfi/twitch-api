@@ -9,10 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		console.log(data)
 	}
 
-	function getResponse(url, callback) {
+		function getResponse(url, callback) {
 		var xhr = new XMLHttpRequest();
 		xhr.open('GET', url);
-		// xhr.withCredentials = true;
 		xhr.onload = function() {
 			if (this.status >= 200 && this.status < 400) {
 				console.log(this.status);
