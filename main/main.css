@@ -4,11 +4,6 @@ body {
 	background-color: #BDBDBD;
 }
 
-.mount-cards {
-	background-color: #fff;
-	box-shadow: 1px 1px 8px 0px rgba(99, 101, 102, 0.85);
-}
-
 .center-text {
 	text-align: center;
 }
@@ -26,7 +21,7 @@ body {
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
-  background: url('https://static-cdn.jtvnw.net/jtv_user_pictures/ogamingsc2-profile_banner-d418aed2c0ef7d35-480.jpeg') center / cover;
+  background: url('https://static-cdn.jtvnw.net/jtv_user_pictures/esl_sc2-profile_banner-f8295b33d1846e75-480.jpeg') center / cover;
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
