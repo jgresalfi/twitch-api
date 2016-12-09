@@ -6,11 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var streamsUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/streams/',
         channelUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/channels/',
         ajaxUrl = [],
+        res,
         twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
 
     function resRender(data, arr) {
-        console.log(data)
-            //This function will handle rendering data/elements to page
+        //This function will handle rendering data/elements to page
+        console.log('We\'re in the render function now...');
     }
 
     //This is the AJAX request
@@ -19,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.open('GET', url);
         xhr.onload = function() {
             if (this.status >= 200 && this.status < 400) {
-                console.log(this.status);
                 callback(this.response);
             } else { console.log(this.response); }
         }
@@ -33,11 +33,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    //Checks to see if stream is online
+    function activeStream(data) {
+        var parsedData = JSON.parse(data),
+            channelUser = Array.from(parsedData._links.channel),
+            newUrl = channelUrl + channelUser;
+        if (parsedData.stream === null) {
+            console.log('Hi there: ' + parsedData._links.channel);
+            getResponse(newUrl, resRender);
+        }
+    }
+
     function statusCheck() {
         //This will call initial AJAX request and determine user stream status - stream === null
+        var checkArr = [];
         userLoop(streamsUrl, twitchUsers);
         ajaxUrl.forEach(function(el) {
-            getResponse(el, resRender);
+            getResponse(el, activeStream);
         })
     }
 
