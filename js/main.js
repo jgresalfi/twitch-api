@@ -33,13 +33,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    //Checks to see if stream is online
+    //Checks to see if stream is online - if not, extract usernames from stream URL and add to Channel URL for another AJAX call
     function activeStream(data) {
         var parsedData = JSON.parse(data),
-            channelUser = Array.from(parsedData._links.channel),
-            newUrl = channelUrl + channelUser;
-        if (parsedData.stream === null) {
-            console.log('Hi there: ' + parsedData._links.channel);
+            channelUser = parsedData._links.channel,
+            prunedUser = channelUser.substr(channelUser.lastIndexOf('/') + 1),
+            newUrl = [];
+        newUrl.push(channelUrl + prunedUser);
+        if (JSON.stringify(parsedData.stream) !== 'null') {
+            console.log('User online: ' + JSON.stringify(parsedData.stream.display_name));
+            resRender(parsedData);
+        } else {
             getResponse(newUrl, resRender);
         }
     }
