@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function resRender(data, arr) {
         //This function will handle rendering data/elements to page
-        console.log('We\'re in the render function now...');
+        console.log(data);
     }
 
     //This is the AJAX request
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.open('GET', url);
         xhr.onload = function() {
             if (this.status >= 200 && this.status < 400) {
+                console.log(this.response);
                 callback(this.response);
             } else { console.log(this.response); }
         }
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             newUrl = [];
         newUrl.push(channelUrl + prunedUser);
         if (JSON.stringify(parsedData.stream) !== 'null') {
-            console.log('User online: ' + JSON.stringify(parsedData.stream.display_name));
+            console.log('User online: ' + JSON.stringify(parsedData.stream.display_name, null, '\t'));
             resRender(parsedData);
         } else {
             getResponse(newUrl, resRender);
