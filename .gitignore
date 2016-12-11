@@ -38,3 +38,5 @@ jspm_packages
 
 # Misc files and folders
 .DS_Store
+channel-obj-structure.json
+stream-obj-structure.json
