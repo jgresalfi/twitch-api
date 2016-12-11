@@ -11,7 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function resRender(data, arr) {
         //This function will handle rendering data/elements to page
-        console.log(data);
+        console.log('This is data entering resRender: ');
+        console.dir(data);
+        var testEl = document.getElementById('test-element');
+        var node = document.createElement('div');
+        node.innerHTML = '<div>' + data._id + '</div>'
+        testEl.appendChild(node);
     }
 
     //This is the AJAX request
@@ -20,8 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.open('GET', url);
         xhr.onload = function() {
             if (this.status >= 200 && this.status < 400) {
-                console.log(this.response);
-                callback(this.response);
+                callback(JSON.parse(this.response));
             } else { console.log(this.response); }
         }
         xhr.send();
@@ -36,13 +40,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Checks to see if stream is online - if not, extract usernames from stream URL and add to Channel URL for another AJAX call
     function activeStream(data) {
-        var parsedData = JSON.parse(data),
+        var parsedData = data,
             channelUser = parsedData._links.channel,
             prunedUser = channelUser.substr(channelUser.lastIndexOf('/') + 1),
             newUrl = [];
         newUrl.push(channelUrl + prunedUser);
-        if (JSON.stringify(parsedData.stream) !== 'null') {
-            console.log('User online: ' + JSON.stringify(parsedData.stream.display_name, null, '\t'));
+        if (parsedData.stream !== null) {
             resRender(parsedData);
         } else {
             getResponse(newUrl, resRender);
