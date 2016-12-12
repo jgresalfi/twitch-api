@@ -10,13 +10,19 @@ document.addEventListener('DOMContentLoaded', function() {
         twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
 
     function resRender(data, arr) {
-        //This function will handle rendering data/elements to page
-        console.log('This is data entering resRender: ');
-        console.dir(data);
-        var testEl = document.getElementById('test-element');
-        var node = document.createElement('div');
-        node.innerHTML = '<div>' + data._id + '</div>'
-        testEl.appendChild(node);
+        
+        //HTML card template for rendering data to page - insert logic to choose stream or channel template...
+
+        var tmpl = document.getElementById('stream-template').content.cloneNode(true),
+            screenName = tmpl.getElementById('screen-name'),
+            chanStatus = tmpl.getElementById('chan-status'),
+            streamLink = tmpl.getElementById('stream-link'),
+            socialShare = tmpl.getElementById('share-button');
+
+        screenName.innerHTML = data.stream.channel.display_name;
+        chanStatus.innerHTML = data.stream.channel.status;
+        streamLink.setAttribute('href', data.stream.channel.url);
+        document.body.appendChild(tmpl);
     }
 
     //This is the AJAX request
