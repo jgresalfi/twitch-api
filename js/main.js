@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //Stream and channel card data to page via HTML templates
         if (data.status === 404) {
             var noUserTmpl = document.getElementById('channel-template').content.cloneNode(true);
-            noUserTmpl.querySelector('.chan-status').innerHTML = '<h3>User Not Found</h3>';
+            noUserTmpl.querySelector('.chan-status').innerHTML = '<h5>User Not Found</h5>';
             document.body.appendChild(noUserTmpl);
         } else if (data.stream) {
             var streamTmpl = document.getElementById('stream-template').content.cloneNode(true),
@@ -26,8 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 socialShare = chanTmpl.getElementById('share-button');
 
             chanTmpl.querySelector('.screen-name').innerHTML = data.display_name;
-            chanTmpl.querySelector('.chan-status').innerHTML = '<h3>Offline</h3>';
+            chanTmpl.querySelector('.chan-status').innerHTML = '<h5>Offline</h5>';
             chanTmpl.querySelector('img').setAttribute('src', data.logo);
+            chanTmpl.querySelector('.mdl-card__title').style.background = 'url("https://www.dropbox.com/s/4grnp44fu97j8xn/twitch_w1.png?raw=1") no-repeat center / cover';
             document.body.appendChild(chanTmpl);
         }
     }

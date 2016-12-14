@@ -29,15 +29,16 @@
     </template>
     <template id="channel-template">
         <div class="element-center demo-card-wide mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <h3 class="screen-name mdl-card__title-text">Screename</h3>
+            <div class="mdl-card__title"></div>
+            <div class="mdl-grid">
+                <h3 class="screen-name mdl-cell mdl-cell--6-col mdl-textfield mdl-card__supporting-text">Screename</h3>
+                <div class="logo-container mdl-cell mdl-cell--6-col">
+                    <img class='logo' alt="user-logo">
+                </div>
+                <div class="chan-status mdl-card__supporting-text">Channel Status</div>
             </div>
-            <div class="chan-status mdl-card__supporting-text">Channel Status</div>
-            <div class="mdl-card__actions mdl-card--border" </div>
-                <a class="stream-link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">View Stream</a>
-            </div>
-            <div class="mdl-card__menu">
-                <img class='logo' alt="user-logo">
+            <div class="mdl-card__actions mdl-card--border">
+                <img src="data:image/png;base64,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" alt="Offline">
             </div>
         </div>
     </template>
