@@ -12,6 +12,12 @@ body {
 	margin: 15px auto;
 }
 
+#logo {
+	border-radius: 2px;
+	height: 50px;
+	width: 50px;
+}
+
 /* End Global Styles */
 
 
