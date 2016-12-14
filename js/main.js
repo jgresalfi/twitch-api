@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             streamTmpl.getElementById('chan-status').innerHTML = data.stream.channel.status;
             streamTmpl.getElementById('stream-link').setAttribute('href', data.stream.channel.url);
             streamTmpl.querySelector('img').setAttribute('src', data.stream.channel.logo);
+            streamTmpl.querySelector('.mdl-card__title').style.background = 'url(' + data.stream.channel.profile_banner + ') center / cover';
             document.body.appendChild(streamTmpl);
         } else if (!data.stream) {
             var chanTmpl = document.getElementById('channel-template').content.cloneNode(true),
