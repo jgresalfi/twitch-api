@@ -2,6 +2,8 @@
 
 body {
 	background-color: #BDBDBD;
+	background: url('https://www.dropbox.com/s/74w4y9hp61954oh/metal_texture_2_by_wojtar_stock.jpg?raw=1') no-repeat fixed;
+	background-size: cover;
 }
 
 .center-text {
