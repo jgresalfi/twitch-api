@@ -8,15 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
         //Stream and channel card data to page via HTML templates
         if (data.status === 404) {
             var noUserTmpl = document.getElementById('channel-template').content.cloneNode(true);
-            noUserTmpl.getElementById('chan-status').innerHTML = '<h3>User Not Found</h3>';
+            noUserTmpl.querySelector('.chan-status').innerHTML = '<h3>User Not Found</h3>';
             document.body.appendChild(noUserTmpl);
         } else if (data.stream) {
             var streamTmpl = document.getElementById('stream-template').content.cloneNode(true),
                 socialShare = streamTmpl.getElementById('share-button');
 
-            streamTmpl.getElementById('screen-name').innerHTML = data.stream.channel.display_name;
-            streamTmpl.getElementById('chan-status').innerHTML = data.stream.channel.status;
-            streamTmpl.getElementById('stream-link').setAttribute('href', data.stream.channel.url);
+            streamTmpl.querySelector('.screen-name').innerHTML = data.stream.channel.display_name;
+            streamTmpl.querySelector('.chan-status').innerHTML = data.stream.channel.status;
+            streamTmpl.querySelector('.stream-link').setAttribute('href', data.stream.channel.url);
             streamTmpl.querySelector('img').setAttribute('src', data.stream.channel.logo);
             streamTmpl.querySelector('.mdl-card__title').style.background = 'url(' + data.stream.channel.profile_banner + ') center / cover';
             document.body.appendChild(streamTmpl);
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
             var chanTmpl = document.getElementById('channel-template').content.cloneNode(true),
                 socialShare = chanTmpl.getElementById('share-button');
 
-            chanTmpl.getElementById('screen-name').innerHTML = data.display_name;
-            chanTmpl.getElementById('chan-status').innerHTML = '<h3>Offline</h3>';
+            chanTmpl.querySelector('.screen-name').innerHTML = data.display_name;
+            chanTmpl.querySelector('.chan-status').innerHTML = '<h3>Offline</h3>';
             chanTmpl.querySelector('img').setAttribute('src', data.logo);
             document.body.appendChild(chanTmpl);
         }
