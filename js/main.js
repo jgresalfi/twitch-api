@@ -10,19 +10,25 @@ document.addEventListener('DOMContentLoaded', function() {
         twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
 
     function resRender(data, arr) {
-        
+
         //HTML card template for rendering data to page - insert logic to choose stream or channel template...
 
-        var tmpl = document.getElementById('stream-template').content.cloneNode(true),
-            screenName = tmpl.getElementById('screen-name'),
-            chanStatus = tmpl.getElementById('chan-status'),
-            streamLink = tmpl.getElementById('stream-link'),
-            socialShare = tmpl.getElementById('share-button');
+        if (data.stream) {
+            var streamTmpl = document.getElementById('stream-template').content.cloneNode(true),
+                socialShare = streamTmpl.getElementById('share-button');
 
-        screenName.innerHTML = data.stream.channel.display_name;
-        chanStatus.innerHTML = data.stream.channel.status;
-        streamLink.setAttribute('href', data.stream.channel.url);
-        document.body.appendChild(tmpl);
+            streamTmpl.getElementById('screen-name').innerHTML = data.stream.channel.display_name;
+            streamTmpl.getElementById('chan-status').innerHTML = data.stream.channel.status;
+            streamTmpl.getElementById('stream-link').setAttribute('href', data.stream.channel.url);
+            document.body.appendChild(streamTmpl);
+        } else {
+            var chanTmpl = document.getElementById('channel-template').content.cloneNode(true),
+                socialShare = chanTmpl.getElementById('share-button');
+
+            chanTmpl.getElementById('screen-name').innerHTML = data.display_name;
+            chanTmpl.getElementById('chan-status').innerHTML = '<h3>Offline</h3>';
+            document.body.appendChild(chanTmpl);
+        }
     }
 
     //This is the AJAX request
