@@ -2,12 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    //AJAX call to Twitch API
-    var streamsUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/streams/',
-        channelUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/channels/',
-        ajaxUrl = [],
-
-        twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
+    var twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
 
     function resRender(data, arr) {
         //Stream and channel card data to page via HTML templates
@@ -48,21 +43,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     //This function iterates over user array, compiles URLs
-    function userLoop(urlType, arr) {
+    function userLoop(urlType, arr, combinedArr) {
         arr.forEach(function(el) {
-            ajaxUrl.push(urlType + el);
+            combinedArr.push(urlType + el);
         });
     }
 
-    //Checks to see if stream is online - if not, extract usernames from stream URL and add to Channel URL for another AJAX call
+    //Checks to see if stream is online - if not, extract usernames from stream URL and append to Channel URL for another AJAX call
     function activeStream(data) {
-        var parsedData = data,
-            channelUser = parsedData._links.channel,
-            prunedUser = channelUser.substr(channelUser.lastIndexOf('/') + 1),
-            newUrl = [];
+        var channelUser = data._links.channel,
+            channelUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/channels/',
+            newUrl = [],
+            prunedUser = channelUser.substr(channelUser.lastIndexOf('/') + 1);
         newUrl.push(channelUrl + prunedUser);
-        if (parsedData.stream !== null) {
-            resRender(parsedData);
+        if (data.stream !== null) {
+            resRender(data);
         } else {
             getResponse(newUrl, resRender);
         }
@@ -70,7 +65,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function statusCheck() {
         //This will build AJAX URLs via userLoop and iterate over returned URL array calling initial AJAX requests
-        userLoop(streamsUrl, twitchUsers);
+        var ajaxUrl = [],
+            streamsUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/streams/';
+        userLoop(streamsUrl, twitchUsers, ajaxUrl);
         ajaxUrl.forEach(function(el) {
             getResponse(el, activeStream);
         })
