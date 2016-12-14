@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 socialShare = streamTmpl.getElementById('share-button');
 
             streamTmpl.querySelector('.screen-name').innerHTML = data.stream.channel.display_name;
-            streamTmpl.querySelector('.chan-status').innerHTML = data.stream.channel.status;
+            streamTmpl.querySelector('.chan-status').innerHTML = '<h5>Player Status: </h5>' + data.stream.channel.status;
             streamTmpl.querySelector('.stream-link').setAttribute('href', data.stream.channel.url);
+            streamTmpl.querySelector('.stream-link').setAttribute('target', '_blank');
             streamTmpl.querySelector('img').setAttribute('src', data.stream.channel.logo);
             streamTmpl.querySelector('.mdl-card__title').style.background = 'url(' + data.stream.channel.profile_banner + ') center / cover';
             document.body.appendChild(streamTmpl);
