@@ -7,12 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function resRender(data, arr) {
         //Stream and channel card data to page via HTML templates
         if (data.status === 404) {
+            console.log('Huzzah!');
             var noUserTmpl = document.getElementById('channel-template').content.cloneNode(true);
-            noUserTmpl.querySelector('.chan-status').innerHTML = '<h5>User Not Found</h5>';
-            document.body.appendChild(noUserTmpl);
+            noUserTmpl.querySelector('.screen-name').innerHTML = '<h5>User Not Found</h5>';
+            noUserTmpl.querySelector('.mdl-card__title').style.background = 'url("https://www.dropbox.com/s/4grnp44fu97j8xn/twitch_w1.png?raw=1") no-repeat center / cover';
+            document.getElementById('mount-point').appendChild(noUserTmpl);
         } else if (data.stream) {
-            var streamTmpl = document.getElementById('stream-template').content.cloneNode(true),
-                socialShare = streamTmpl.getElementById('share-button');
+            var streamTmpl = document.getElementById('stream-template').content.cloneNode(true);
 
             streamTmpl.querySelector('.screen-name').innerHTML = data.stream.channel.display_name;
             streamTmpl.querySelector('.chan-status').innerHTML = '<h5>Player Status: </h5>' + data.stream.channel.status;
@@ -20,16 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
             streamTmpl.querySelector('.stream-link').setAttribute('target', '_blank');
             streamTmpl.querySelector('img').setAttribute('src', data.stream.channel.logo);
             streamTmpl.querySelector('.mdl-card__title').style.background = 'url(' + data.stream.channel.profile_banner + ') center / cover';
-            document.body.appendChild(streamTmpl);
+            document.getElementById('mount-point').appendChild(streamTmpl);
         } else if (!data.stream) {
-            var chanTmpl = document.getElementById('channel-template').content.cloneNode(true),
-                socialShare = chanTmpl.getElementById('share-button');
+            var chanTmpl = document.getElementById('channel-template').content.cloneNode(true);
 
             chanTmpl.querySelector('.screen-name').innerHTML = data.display_name;
-            chanTmpl.querySelector('.chan-status').innerHTML = '<h5>Offline</h5>';
+            chanTmpl.querySelector('.chan-status').innerHTML = '<h5>Stream offline...</h5>';
             chanTmpl.querySelector('img').setAttribute('src', data.logo);
             chanTmpl.querySelector('.mdl-card__title').style.background = 'url("https://www.dropbox.com/s/4grnp44fu97j8xn/twitch_w1.png?raw=1") no-repeat center / cover';
-            document.body.appendChild(chanTmpl);
+            document.getElementById('mount-point').appendChild(chanTmpl);
         }
     }
 
