@@ -2,14 +2,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    var twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
+    var twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404", "brunofin"];
+    var noUser;
 
-    function resRender(data, arr) {
+    function resRender(data, usr) {
         //Stream and channel card data to page via HTML templates
-        if (data.status === 404) {
-            console.log('Huzzah!');
+        if (data.status === 404 || data.error === 'Not Found') {
             var noUserTmpl = document.getElementById('channel-template').content.cloneNode(true);
-            noUserTmpl.querySelector('.screen-name').innerHTML = '<h5>User Not Found</h5>';
+            noUserTmpl.querySelector('.screen-name').innerHTML = data.message;
             noUserTmpl.querySelector('.mdl-card__title').style.background = 'url("https://www.dropbox.com/s/4grnp44fu97j8xn/twitch_w1.png?raw=1") no-repeat center / cover';
             document.getElementById('mount-point').appendChild(noUserTmpl);
         } else if (data.stream) {
