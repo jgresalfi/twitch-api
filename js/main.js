@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    var twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404", "brunofin"];
+    var twitchUsers = ["OgamingSC2", "cretetion", "freecodecamp", "storbeck", "ESL_SC2", "habathcx", "brunofin", "RobotCaleb", "noobs2ninjas", "comster404"];
     var noUser;
 
     function resRender(data, usr) {

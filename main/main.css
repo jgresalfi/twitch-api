@@ -16,7 +16,12 @@ html {
     background-color: #757575;
     max-width: 75vw;
     margin: 0 auto;
-    padding-top: 15px;
+    padding: 10px 0 10px 0;
+}
+
+.nav-menu {
+    background: rgba(65, 41, 105, 1) fixed;
+    position: fixed;
 }
 
 .center-text {
@@ -28,7 +33,7 @@ html {
 }
 
 .element-center {
-    margin: 15px auto;
+    margin: 35px auto;
 }
 
 h5 {
@@ -59,15 +64,16 @@ h5 {
     margin: 0;
 }
 
-
-/* End Global Styles */
-
 .mdl-card__supporting-text {
     font-size: 1.2rem;
 }
 
 .demo-card-wide.mdl-card {
     width: 512px;
+}
+
+.demo-card-wide:first-child {
+    margin-top: 50px;
 }
 
 .demo-card-wide > .mdl-card__title {
