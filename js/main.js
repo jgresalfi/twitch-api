@@ -8,13 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function resRender(data, usr) {
         //Stream and channel card data to page via HTML templates
         if (data.status === 404 || data.error === 'Not Found') {
-            var noUserTmpl = document.getElementById('channel-template').content.cloneNode(true);
+            var noUserTmpl = document.getElementById('offline-template').content.cloneNode(true);
             noUserTmpl.querySelector('.screen-name').innerHTML = data.message;
             noUserTmpl.querySelector('.mdl-card__title').style.background = 'url("https://www.dropbox.com/s/4grnp44fu97j8xn/twitch_w1.png?raw=1") no-repeat center / cover';
             document.getElementById('mount-point').appendChild(noUserTmpl);
         } else if (data.stream) {
             var streamTmpl = document.getElementById('stream-template').content.cloneNode(true);
-
             streamTmpl.querySelector('.screen-name').innerHTML = data.stream.channel.display_name;
             streamTmpl.querySelector('.chan-status').innerHTML = '<h5>Player Status: </h5>' + data.stream.channel.status;
             streamTmpl.querySelector('.stream-link').setAttribute('href', data.stream.channel.url);
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('mount-point').appendChild(streamTmpl);
         } else if (!data.stream) {
             var chanTmpl = document.getElementById('channel-template').content.cloneNode(true);
-
             chanTmpl.querySelector('.screen-name').innerHTML = data.display_name;
             chanTmpl.querySelector('.chan-status').innerHTML = '<h5>Stream offline...</h5>';
             chanTmpl.querySelector('img').setAttribute('src', data.logo);
@@ -82,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var filterBtn = document.getElementById('filter');
     filterBtn.addEventListener('click', function() {
         console.log('Hello computer, this is filter!');
+
     });
 
     //Search feature
