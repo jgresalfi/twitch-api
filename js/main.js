@@ -75,5 +75,12 @@ document.addEventListener('DOMContentLoaded', function() {
             getResponse(el, activeStream);
         })
     }
+    //Fire when ready!
     statusCheck();
+
+    //Filter feature
+    var filterBtn = document.getElementById('filter');
+    filterBtn.addEventListener('click', function() {
+        console.log('Hello computer!');
+    })
 });
