@@ -1,0 +1,89 @@
+/* Global Styles */
+
+html {
+    background: #28343b;
+    background: -moz-linear-gradient(top, #28343b 0%, #828c95 64%, #b5bdc8 100%) fixed;
+    background: -webkit-linear-gradient(top, #28343b 0%, #828c95 64%, #b5bdc8 100%) fixed;
+    background: linear-gradient(to bottom, #28343b 0%, #828c95 64%, #b5bdc8 100%) fixed;
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#28343b', endColorstr='#b5bdc8', GradientType=0);
+}
+
+.nav-menu {
+    background: #6441A4 fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100px;
+    z-index: 1;
+}
+
+.header-logo {
+    margin: 15px 10px 0 10px;
+    max-width: 80px;
+}
+
+.wall-paper {
+    margin-left: 100px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.chan-status {
+    padding-left: 10px;
+}
+
+.element-center {
+    margin: 35px auto;
+}
+
+h5 {
+    margin-top: 0;
+}
+
+.logo-container {
+    text-align: right;
+}
+
+.logo {
+    border-radius: 2px;
+    height: 50px;
+    width: 50px;
+}
+
+.screen-name {
+    padding: 16px 16px 7px 0px;
+    font-weight: 600;
+    font-size: 1.4rem!important;
+}
+
+.user-name {
+    color: rgb(3, 169, 244);
+}
+
+.mdl-grid {
+    margin: 0;
+}
+
+.mdl-card__supporting-text {
+    font-size: 1.2rem;
+}
+
+.demo-card-wide.mdl-card {
+    width: 512px;
+}
+
+.demo-card-wide:first-child {
+    margin-top: 50px;
+}
+
+.demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+}
+
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}
