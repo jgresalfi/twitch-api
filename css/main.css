@@ -23,6 +23,14 @@ html {
     max-width: 80px;
 }
 
+.filter-logo {
+    margin: 25px 25px;
+}
+
+.search-logo {
+    margin: 0 25px;
+}
+
 .wall-paper {
     margin-left: 100px;
 }
