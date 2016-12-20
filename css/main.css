@@ -38,6 +38,21 @@ button {
     margin: 0 25px;
 }
 
+.search-bar {
+    background-color: #6441A4;
+    color: #fff;
+    width: 650px;
+    margin: 85px 20.5%;
+    display: none;
+    font-size: 1.5rem;
+    height: 50px;
+    border-radius: 2px;
+    border: none;
+    padding-left: 25px;
+    position: fixed;
+    z-index: 2;
+}
+
 .wall-paper {
     margin-left: 100px;
 }
@@ -82,7 +97,6 @@ h5 {
     margin: 0;
 }
 
-
 .mdl-button.mdl-button--colored {
     color: #6441A4;
     font-weight: 600;
@@ -109,12 +123,22 @@ h5 {
     color: #fff;
 }
 
+
 /* Chrome button and input border fix */
 
 button,
 button:focus,
-button:active {
+button:active,
+input,
+input:focus,
+input:active {
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+/* Hide elements */
+
+.hide-element {
+    display: block !important;
 }

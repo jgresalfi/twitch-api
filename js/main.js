@@ -79,13 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
     //Filter feature
     var filterBtn = document.getElementById('filter');
     filterBtn.addEventListener('click', function() {
-        console.log('Hello computer, this is filter!');
 
     });
 
     //Search feature
     var searchBtn = document.getElementById('search');
     searchBtn.addEventListener('click', function() {
-        console.log('This is the search button clicking away...');
+        var searchBar = document.getElementById('searchBar');
+        searchBar.classList.toggle('hide-element');
     })
 });
