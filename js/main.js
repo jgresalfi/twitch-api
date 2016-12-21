@@ -64,17 +64,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function statusCheck() {
+    function statusCheck(userArr) {
         //This will build AJAX URLs via userLoop and iterate over returned URL array calling initial AJAX requests
         var ajaxUrl = [],
             streamsUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/streams/';
-        userLoop(streamsUrl, twitchUsers, ajaxUrl);
+        userLoop(streamsUrl, userArr, ajaxUrl);
         ajaxUrl.forEach(function(el) {
             getResponse(el, activeStream);
         });
     }
     //Fire when ready!
-    statusCheck();
+    statusCheck(twitchUsers);
 
     //Filter feature
     var filterBtn = document.getElementById('filter');
@@ -91,8 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //AJAX call for user search
     var searchBar = document.getElementById('searchBar');
+    var searchArr = [];
     searchBar.onchange = function() {
         console.log(searchBar.value);
+        searchArr.push(searchBar.value);
+        statusCheck(searchArr);
     }
 
 });
