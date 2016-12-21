@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var noUser;
 
     function resRender(data, usr) {
-        //Stream and channel card data to page via HTML templates
+        //Stream, channel, user not found card data to page via HTML templates
         if (data.status === 404 || data.error === 'Not Found') {
             var noUserTmpl = document.getElementById('offline-template').content.cloneNode(true);
             noUserTmpl.querySelector('.screen-name').innerHTML = data.message;
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         userLoop(streamsUrl, twitchUsers, ajaxUrl);
         ajaxUrl.forEach(function(el) {
             getResponse(el, activeStream);
-        })
+        });
     }
     //Fire when ready!
     statusCheck();
@@ -82,10 +82,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 
-    //Search feature
+    //Search reveal
     var searchBtn = document.getElementById('search');
     searchBtn.addEventListener('click', function() {
         var searchBar = document.getElementById('searchBar');
         searchBar.classList.toggle('hide-element');
-    })
+    });
+
+    //AJAX call for user search
+    var searchBar = document.getElementById('searchBar');
+    searchBar.onchange = function() {
+        console.log(searchBar.value);
+    }
+
 });
