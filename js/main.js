@@ -86,14 +86,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var searchBtn = document.getElementById('search');
     searchBtn.addEventListener('click', function() {
         var searchBar = document.getElementById('searchBar');
-        searchBar.classList.toggle('hide-element');
+        searchBar.classList.toggle('reveal-element');
+
+        //When search field is hidden again, return to default array view
+        if (!searchBar.classList.contains('reveal-element')) {
+            statusCheck(twitchUsers);
+        }
     });
 
     //AJAX call for user search
     var searchBar = document.getElementById('searchBar');
+    var cardContainer = document.getElementById('mount-point');
     var searchArr = [];
     searchBar.onchange = function() {
-        console.log(searchBar.value);
+
+        //Parse search input to accept multiple array elements
+
+        searchArr = [];
+        cardContainer.innerHTML = '';
         searchArr.push(searchBar.value);
         statusCheck(searchArr);
     }
