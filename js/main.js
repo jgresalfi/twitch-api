@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     var twitchUsers = ["OgamingSC2", "cretetion", "freecodecamp", "storbeck", "ESL_SC2", "habathcx", "brunofin", "RobotCaleb", "noobs2ninjas", "comster404"];
-    var noUser;
 
     function resRender(data, usr) {
         //Stream, channel, user not found card data to page via HTML templates
