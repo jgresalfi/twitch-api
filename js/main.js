@@ -51,14 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Checks to see if stream is online - if not, extract usernames from stream URL and append to Channel URL for another AJAX call
     function activeStream(data) {
-        var channelUser = data._links.channel,
-            channelUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/channels/',
-            newUrl = [],
-            prunedUser = channelUser.substr(channelUser.lastIndexOf('/') + 1);
-        newUrl.push(channelUrl + prunedUser);
         if (data.stream !== null) {
             resRender(data);
         } else {
+            var channelUser = data._links.channel,
+                channelUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/channels/',
+                newUrl = [],
+                prunedUser = channelUser.substr(channelUser.lastIndexOf('/') + 1);
+            newUrl.push(channelUrl + prunedUser);
             getResponse(newUrl, resRender);
         }
     }
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //Parse search input to accept multiple array elements
         searchArr = searchBar.value.split(' ');
         statusCheck(searchArr);
-        searchBar.value =searchBar.defaultValue;
+        searchBar.value = searchBar.defaultValue;
         searchBar.classList.toggle('reveal-element');
     }
 
