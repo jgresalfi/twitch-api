@@ -42,15 +42,13 @@ button {
     background-color: #6441A4;
     color: #fff;
     width: 650px;
-    margin: 85px 27.5%;
-    display: none;
+    margin: 50px 27.5% 0;
+    visibility: hidden;
     font-size: 1.5rem;
     height: 50px;
     border-radius: 2px;
     border: none;
     padding-left: 25px;
-    position: fixed;
-    z-index: 2;
 }
 
 .wall-paper {
@@ -66,7 +64,11 @@ button {
 }
 
 .element-center {
-    margin: 35px auto;
+    margin: 0px auto 35px;
+}
+
+.card-down {
+    margin-top: 50px;
 }
 
 h5 {
@@ -110,8 +112,9 @@ h5 {
     width: 512px;
 }
 
+
 .demo-card-wide:first-child {
-    margin-top: 50px;
+    transition: margin-top 1s;
 }
 
 .demo-card-wide > .mdl-card__title {
@@ -162,5 +165,5 @@ input:active {
 /* Hide elements */
 
 .reveal-element {
-    display: block !important;
+    visibility: visible !important;
 }

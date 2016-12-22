@@ -85,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var searchBtn = document.getElementById('search');
     searchBtn.addEventListener('click', function() {
         var searchBar = document.getElementById('searchBar');
+        var cardCont = document.getElementById('mount-point');
+        cardCont.children[0].classList.toggle('card-down');
         searchBar.classList.toggle('reveal-element');
 
         //When search field is hidden again, return to default array view
@@ -95,16 +97,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //AJAX call for user search
     var searchBar = document.getElementById('searchBar');
-    var cardContainer = document.getElementById('mount-point');
-    var searchArr = [];
     searchBar.onchange = function() {
-
-        //Parse search input to accept multiple array elements
-
-        searchArr = [];
+        var cardContainer = document.getElementById('mount-point'),
+            searchArr = [];
         cardContainer.innerHTML = '';
-        searchArr.push(searchBar.value);
+        //Parse search input to accept multiple array elements
+        searchArr = searchBar.value.split(' ');
         statusCheck(searchArr);
+        searchBar.value =searchBar.defaultValue;
+        searchBar.classList.toggle('reveal-element');
     }
 
 });
