@@ -1,11 +1,7 @@
 /* Global Styles */
 
 html {
-    background: #28343b;
-    background: -moz-linear-gradient(top, #28343b 0%, #828c95 64%, #b5bdc8 100%) fixed;
-    background: -webkit-linear-gradient(top, #28343b 0%, #828c95 64%, #b5bdc8 100%) fixed;
-    background: linear-gradient(to bottom, #28343b 0%, #828c95 64%, #b5bdc8 100%) fixed;
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#28343b', endColorstr='#b5bdc8', GradientType=0);
+    background: url('https://www.dropbox.com/s/ztiipuh8k57d91c/background.svg?raw=1') fixed;
 }
 
 .nav-menu {
@@ -49,6 +45,7 @@ button {
     border-radius: 2px;
     border: none;
     padding-left: 25px;
+    transition: visibility .25s;
 }
 
 .wall-paper {
@@ -165,5 +162,5 @@ input:active {
 /* Hide elements */
 
 .reveal-element {
-    visibility: visible !important;
+    visibility: visible;
 }
