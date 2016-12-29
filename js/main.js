@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var twitchUsers = ["OgamingSC2", "cretetion", "freecodecamp", "storbeck", "ESL_SC2", "habathcx", "brunofin", "RobotCaleb", "noobs2ninjas", "comster404"];
 
+    //This is the render function
     function resRender(data, usr) {
         //Stream, channel, user not found card data to page via HTML templates
         if (data.status === 404 || data.error === 'Not Found') {
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    //This is the AJAX request
+    //This is the request function
     function getResponse(url, callback) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url);
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.send();
     }
 
-    //This function iterates over user array, compiles URLs
+    //This function iterates over user array, compiles URLs for AJAX req
     function userLoop(urlType, arr, combinedArr) {
         arr.forEach(function(el) {
             combinedArr.push(urlType + el);
@@ -63,8 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    //Build AJAX URLs via userLoop, iterate over returned URL array calling initial AJAX requests via getResponse
     function statusCheck(userArr) {
-        //This will build AJAX URLs via userLoop and iterate over returned URL array calling initial AJAX requests
         var ajaxUrl = [],
             streamsUrl = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api/streams/';
         userLoop(streamsUrl, userArr, ajaxUrl);
@@ -72,16 +73,21 @@ document.addEventListener('DOMContentLoaded', function() {
             getResponse(el, activeStream);
         });
     }
-    //Fire when ready!
-    statusCheck(twitchUsers);
 
-    //Filter feature
-    var filterBtn = document.getElementById('filter');
-    filterBtn.addEventListener('click', function() {
+    //User search function
+    var searchBar = document.getElementById('searchBar');
+    searchBar.onchange = function() {
+        var cardContainer = document.getElementById('mount-point'),
+            searchArr = [];
+        cardContainer.innerHTML = '';
+        //Parse search input to accept multiple array elements
+        searchArr = searchBar.value.split(' ');
+        statusCheck(searchArr);
+        searchBar.value = searchBar.defaultValue;
+        searchBar.classList.toggle('reveal-element');
+    }
 
-    });
-
-    //Search reveal
+    //Searchbar reveal function
     var searchBtn = document.getElementById('search');
     searchBtn.addEventListener('click', function() {
         var searchBar = document.getElementById('searchBar');
@@ -95,17 +101,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    //AJAX call for user search
-    var searchBar = document.getElementById('searchBar');
-    searchBar.onchange = function() {
-        var cardContainer = document.getElementById('mount-point'),
-            searchArr = [];
-        cardContainer.innerHTML = '';
-        //Parse search input to accept multiple array elements
-        searchArr = searchBar.value.split(' ');
-        statusCheck(searchArr);
-        searchBar.value = searchBar.defaultValue;
-        searchBar.classList.toggle('reveal-element');
-    }
+    //Filter feature function
+    var filterBtn = document.getElementById('filter');
+    filterBtn.addEventListener('click', function() {
 
+    });
+
+    //Fire when ready!
+    statusCheck(twitchUsers);
 });
