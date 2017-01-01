@@ -1,7 +1,8 @@
 /* Global Styles */
 
 html {
-    background: url('https://www.dropbox.com/s/ztiipuh8k57d91c/background.svg?raw=1') fixed;
+    background: url('https://www.dropbox.com/s/9pf8khljts5x1ly/background.svg?raw=1') no-repeat fixed;
+    background-size: cover;
 }
 
 .nav-menu {
@@ -38,8 +39,8 @@ button {
     background-color: #6441A4;
     color: #fff;
     width: 650px;
-    margin: 50px 27.5% 0;
-    visibility: hidden;
+    margin: 125px 27.5% 50px;
+    display: none;
     font-size: 1.5rem;
     height: 50px;
     border-radius: 2px;
@@ -62,10 +63,6 @@ button {
 
 .element-center {
     margin: 0px auto 35px;
-}
-
-.card-down {
-    margin-top: 50px;
 }
 
 h5 {
@@ -109,9 +106,8 @@ h5 {
     width: 512px;
 }
 
-
 .demo-card-wide:first-child {
-    transition: margin-top .25s;
+    margin-top: 50px;
 }
 
 .demo-card-wide > .mdl-card__title {
@@ -162,5 +158,5 @@ input:active {
 /* Hide elements */
 
 .reveal-element {
-    visibility: visible;
+    display: block;
 }
