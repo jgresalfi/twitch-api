@@ -79,12 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
     searchBar.onchange = function() {
         var cardContainer = document.getElementById('mount-point'),
             searchArr = [];
-        cardContainer.innerHTML = '';
+        cardContainer.innerHTML = ' ';
+
         //Parse search input to accept multiple array elements
+
         searchArr = searchBar.value.split(' ');
         statusCheck(searchArr);
         searchBar.value = searchBar.defaultValue;
-        // searchBar.classList.toggle('reveal-element');
     }
 
     //Searchbar reveal function
@@ -92,13 +93,11 @@ document.addEventListener('DOMContentLoaded', function() {
     searchBtn.addEventListener('click', function() {
         var searchBar = document.getElementById('searchBar');
         var cardContainer = document.getElementById('mount-point');
-        // cardContainer.children[0].classList.toggle('card-down');
-        cardContainer.innerHTML = " ";
+        cardContainer.innerHTML = ' ';
         searchBar.classList.toggle('reveal-element');
-
         //When search field is hidden again, return to default array view
         if (!searchBar.classList.contains('reveal-element')) {
-            cardContainer.innerHTML = " ";
+            cardContainer.innerHTML = ' ';
             statusCheck(twitchUsers);
         }
     });
@@ -106,7 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
     //Filter feature function
     var filterBtn = document.getElementById('filter');
     filterBtn.addEventListener('click', function() {
-
+        var cards = document.querySelectorAll('.mdl-card');
+        for (var entry of cards.entries()) {
+            if (!entry[1].classList.contains('online')) {
+                console.log(entry[1].classList.values('online'));
+            }
+        }
     });
 
     //Fire when ready!

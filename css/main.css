@@ -160,3 +160,7 @@ input:active {
 .reveal-element {
     display: block;
 }
+
+.hide-element {
+    display: none;
+}
