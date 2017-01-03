@@ -113,12 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function cardReveal(nodeList) {
         nodeList.forEach(function(item) {
             item.classList.remove('hide-element');
+            item.classList.add('filter-margin');
         })
     }
 
     //Filter feature function
     var filterBtn = document.getElementById('filter'),
-        counter = 1;
+        counter = 1; //This is not very functional...mutating the value of this global variable :-(
     filterBtn.addEventListener('click', function() {
         var cards = document.querySelectorAll('.mdl-card'),
             online = document.querySelectorAll('.online'),

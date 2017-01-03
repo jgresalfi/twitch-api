@@ -106,7 +106,8 @@ h5 {
     width: 512px;
 }
 
-.demo-card-wide:first-child {
+.demo-card-wide:first-child,
+.filter-margin {
     margin-top: 50px;
 }
 
@@ -155,11 +156,7 @@ input:active {
 }
 
 
-/* Hide elements */
-
-.reveal-element {
-    display: block;
-}
+/* Hide cards */
 
 .hide-element {
     display: none;
