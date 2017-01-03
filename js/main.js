@@ -102,15 +102,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    //Card hiding function
+    function cardHide(nodeList) {
+        nodeList.forEach(function(item) {
+            item.classList.add('hide-element');
+        })
+    }
+
+    //Card reveal function
+    function cardReveal(nodeList) {
+        nodeList.forEach(function(item) {
+            item.classList.remove('hide-element');
+        })
+    }
+
     //Filter feature function
-    var filterBtn = document.getElementById('filter');
+    var filterBtn = document.getElementById('filter'),
+        counter = 1;
     filterBtn.addEventListener('click', function() {
-        var cards = document.querySelectorAll('.mdl-card');
-        for (var entry of cards.entries()) {
-            if (!entry[1].classList.contains('online')) {
-                console.log(entry[1].classList.values('online'));
+        var cards = document.querySelectorAll('.mdl-card'),
+            online = document.querySelectorAll('.online'),
+            offline = document.querySelectorAll('.offline'),
+            notFound = document.querySelectorAll('.not-found');
+        console.log(cards);
+        cards.forEach(function(item) {
+            if (counter === 1) {
+                cardHide(offline);
+                cardHide(notFound);
+            } else if (counter === 2) {
+                cardReveal(offline);
+                cardHide(online);
+            } else if (counter === 3) {
+                cardReveal(notFound);
+                cardHide(offline);
+            } else if (counter === 4) {
+                cardReveal(offline);
+                cardReveal(online);
+                counter = 0;
             }
-        }
+            console.log(counter);
+        })
+        counter++;
     });
 
     //Fire when ready!
