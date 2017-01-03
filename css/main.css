@@ -156,7 +156,11 @@ input:active {
 }
 
 
-/* Hide cards */
+/* Hide / reveal elements */
+
+.reveal-element {
+    display: block;
+}
 
 .hide-element {
     display: none;
