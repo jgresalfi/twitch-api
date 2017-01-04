@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
             online = document.querySelectorAll('.online'),
             offline = document.querySelectorAll('.offline'),
             notFound = document.querySelectorAll('.not-found');
-        console.log(cards);
         cards.forEach(function(item) {
             if (counter === 1) {
                 cardHide(offline);
@@ -141,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 cardReveal(online);
                 counter = 0;
             }
-            console.log(counter);
         })
         counter++;
     });
