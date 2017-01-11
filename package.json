@@ -1,0 +1,22 @@
+{
+  "name": "twitch-api",
+  "version": "1.0.0",
+  "description": "Twitch status app in vanilla JS and Material Design Lite",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgresalfi/twitch-api.git"
+  },
+  "author": "Jason Gresalfi <jason.gresalfi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jgresalfi/twitch-api/issues"
+  },
+  "homepage": "https://github.com/jgresalfi/twitch-api#readme",
+  "dependencies": {
+    "html5tooltipsjs": "^1.7.0"
+  }
+}
