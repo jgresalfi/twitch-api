@@ -38,8 +38,11 @@ button {
 .search-bar {
     background-color: #6441A4;
     color: #fff;
-    width: 650px;
-    margin: 125px 27.5% 50px;
+    width: 40%;
+    margin-top: 125px;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin-left: calc(37% - 7%);
     display: none;
     font-size: 1.5rem;
     height: 50px;
