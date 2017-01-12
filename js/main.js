@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var cardContainer = document.getElementById('mount-point');
     cardContainer.innerHTML = ' ';
     searchBar.classList.toggle('reveal-element');
+    searchBar.focus();
     //When search field is hidden again, return to default array view
     if (!searchBar.classList.contains('reveal-element')) {
       cardContainer.innerHTML = ' ';
