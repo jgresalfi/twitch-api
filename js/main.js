@@ -82,10 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var cardContainer = document.getElementById('mount-point'),
       searchArr = [];
     cardContainer.innerHTML = ' ';
-
-    //Parse search input to accept multiple array elements
-
-    searchArr = searchBar.value.split(' ');
+    searchArr = searchBar.value.replace(/\s/g, "").split(',');
     statusCheck(searchArr);
     searchBar.value = searchBar.defaultValue;
   }
